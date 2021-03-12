@@ -24,6 +24,10 @@ def social_feed():
     # TODO: Get first 10 Posts with the most likes 
     return 'Hi'
 
+def team_social_feed():
+    # TODO: Get first 10 posts from certain team
+    return None
+
 # User likes a post
 def like_post():
     # TODO: Add 1 to like count of liked post
@@ -33,6 +37,8 @@ def like_post():
 def add_comment():
     # TODO: Create new comment record with given info
     return None
+
+
 
 # User buys reward
 def buy_reward():

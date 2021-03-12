@@ -1,32 +1,67 @@
-from flask import Flask
+from flask import Flask, request, jsonify
 import pypyodbc
 
 app = Flask(__name__)
 
-# 73.83.21.192/32
-
-connection = pypyodbc.connect(r'DRIVER={ODBC Driver 17 for SQL Server}; SERVER=capstone.cgt2vqhhmy5k.us-east-2.rds.amazonaws.com; DATABASE=Posts; UID=admin; PWD=INFO490Capstone')
-
-cursor = connection.cursor()
-cursor.execute('''
-    CREATE TABLE test (
-        testField varchar(50)
-    )
-''')
-connection.commit()
-print(cursor.execute("SELECT * FROM test"))
+conn_string = r'DRIVER={ODBC Driver 17 for SQL Server}; SERVER=capstone.cgt2vqhhmy5k.us-east-2.rds.amazonaws.com; DATABASE=FanCentral; UID=admin; PWD=INFO490Capstone'
 
 # TODO: Put in mock data
 
 # Get social feed
-@app.route('/feed')
+@app.route('/feed', methods=['GET'])
 def social_feed():
-    # TODO: Get first 10 Posts with the most likes 
-    return 'Hi'
+    # TODO: Get first 10 Posts with the most likes
 
-def team_social_feed():
+    conn = pypyodbc.connect(conn_string)
+    cursor = conn.cursor()
+    if 'id' in request.args:
+        team_id = int(request.args['id'])
+        cursor.execute("""
+            SELECT T.TeamID
+            FROM Teams T
+                JOIN Posts P ON P.TeamID = T.TeamID
+            WHERE T.TeamID = {}
+            ORDER BY P.LikesNumber
+        """.format(team_id))
+    else:
+        cursor.execute('''
+            SELECT TOP 10 *
+            FROM Posts P
+            ORDER BY P.LikesNumber
+        ''')
+    posts_arr = []
+    for row in cursor.fetchall():
+        curr_post = {}
+        curr_post['PostID'] = row[0]
+        curr_post['TeamID'] = row[1]
+        curr_post['CommentsNumber'] = row[2]
+        curr_post['LikesNumber'] = row[3]
+        curr_post['PostURL'] = row[4]
+        posts_arr.append(curr_post)
+    return jsonify(posts_arr)
+
+@app.route('/feed/<team_id>', methods=['GET'])
+def team_social_feed(team_id):
     # TODO: Get first 10 posts from certain team
-    return None
+    conn = pypyodbc.connect(conn_string)
+    cursor = conn.cursor()
+    cursor.execute('''
+        SELECT T.TeamID
+        FROM Teams T
+            JOIN Posts P ON P.TeamID = T.TeamID
+        WHERE T.TeamID = {}
+        ORDER BY P.LikesNumber
+    '''.format(team_id))
+    posts_arr = []
+    for row in cursor.fetchall():
+        curr_post = {}
+        curr_post['PostID'] = row[0]
+        curr_post['TeamID'] = row[1]
+        curr_post['CommentsNumber'] = row[2]
+        curr_post['LikesNumber'] = row[3]
+        curr_post['PostURL'] = row[4]
+        posts_arr.append(curr_post)
+    return jsonify(posts_arr)
 
 # User likes a post
 def like_post():
@@ -41,6 +76,7 @@ def add_comment():
 
 
 # User buys reward
+
 def buy_reward():
     # TODO: Subtract reward amount from user profile
     return None
@@ -51,13 +87,9 @@ def new_post():
     return None
 
 # Get user porfile
-def user_profile():
+@app.route('/user/<username>')
+def user_profile(username):
     # TODO: Return current user info
-    return None
-
-# Get team profile
-def team_profile():
-    # NOT FOR CURRENT ITERARTION
     return None
 
 # NOT FOR CURRENT ITERATION
@@ -74,3 +106,6 @@ def news_updates():
 def chat_room():
     return None
 '''
+
+if __name__ == '__main__':
+    app.run(debug=True) 

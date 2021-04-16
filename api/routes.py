@@ -4,8 +4,6 @@ import requests
 
 app = Flask(__name__)
 
-conn_string = r'DRIVER={ODBC Driver 17 for SQL Server}; SERVER=capstone.cgt2vqhhmy5k.us-east-2.rds.amazonaws.com; DATABASE=FanCentral; UID=admin; PWD=INFO490Capstone'
-
 # TODO: Put in mock data
 
 # Get social feed
@@ -13,8 +11,8 @@ conn_string = r'DRIVER={ODBC Driver 17 for SQL Server}; SERVER=capstone.cgt2vqhh
 def social_feed():
     # TODO: Get first 10 Posts with the most likes
 
-    conn = pypyodbc.connect(conn_string)
-    cursor = conn.cursor()
+    connection = pypyodbc.connect(r'DRIVER={ODBC Driver 17 for SQL Server}; SERVER=capstone.cgt2vqhhmy5k.us-east-2.rds.amazonaws.com; DATABASE=FanCentral; UID=admin; PWD=INFO490Capstone')
+    cursor = connection.cursor()
     # if 'id' in request.args:
     #     team_id = int(request.args['id'])
     #     cursor.execute("""
@@ -39,14 +37,14 @@ def social_feed():
     #     curr_post['LikesNumber'] = row[3]
     #     curr_post['PostURL'] = row[4]
     #     posts_arr.append(curr_post)
-    postIDs = [1381674911517667329, 1380561323226845184, 1379131724894859266, 1376619627824914433, 1373318416908439554]
+    postIDs = cursor.execute("SELECT * FROM Posts")
     posts = []
     for postID in postIDs:
         curr_post = {}
-        curr_post['id'] = postID
+        curr_post['id'] = postID[0]
         posts.append(curr_post)
 
-    return jsonify(posts)
+    return posts
 
 @app.route('/feed/<team_id>', methods=['GET'])
 def team_social_feed(team_id):

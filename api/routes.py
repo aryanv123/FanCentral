@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 import pypyodbc
+import requests
 
 app = Flask(__name__)
 
@@ -14,31 +15,38 @@ def social_feed():
 
     conn = pypyodbc.connect(conn_string)
     cursor = conn.cursor()
-    if 'id' in request.args:
-        team_id = int(request.args['id'])
-        cursor.execute("""
-            SELECT T.TeamID
-            FROM Teams T
-                JOIN Posts P ON P.TeamID = T.TeamID
-            WHERE T.TeamID = {}
-            ORDER BY P.LikesNumber
-        """.format(team_id))
-    else:
-        cursor.execute('''
-            SELECT TOP 10 *
-            FROM Posts P
-            ORDER BY P.LikesNumber
-        ''')
-    posts_arr = []
-    for row in cursor.fetchall():
+    # if 'id' in request.args:
+    #     team_id = int(request.args['id'])
+    #     cursor.execute("""
+    #         SELECT T.TeamID
+    #         FROM Teams T
+    #             JOIN Posts P ON P.TeamID = T.TeamID
+    #         WHERE T.TeamID = {}
+    #         ORDER BY P.LikesNumber
+    #     """.format(team_id))
+    # else:
+    #     cursor.execute('''
+    #         SELECT TOP 10 *
+    #         FROM Posts P
+    #         ORDER BY P.LikesNumber
+    #     ''')
+    # posts_arr = []
+    # for row in cursor.fetchall():
+    #     curr_post = {}
+    #     curr_post['PostID'] = row[0]
+    #     curr_post['TeamID'] = row[1]
+    #     curr_post['CommentsNumber'] = row[2]
+    #     curr_post['LikesNumber'] = row[3]
+    #     curr_post['PostURL'] = row[4]
+    #     posts_arr.append(curr_post)
+    postIDs = [1381674911517667329, 1380561323226845184, 1379131724894859266, 1376619627824914433, 1373318416908439554]
+    posts = []
+    for postID in postIDs:
         curr_post = {}
-        curr_post['PostID'] = row[0]
-        curr_post['TeamID'] = row[1]
-        curr_post['CommentsNumber'] = row[2]
-        curr_post['LikesNumber'] = row[3]
-        curr_post['PostURL'] = row[4]
-        posts_arr.append(curr_post)
-    return jsonify(posts_arr)
+        curr_post['id'] = postID
+        posts.append(curr_post)
+
+    return jsonify(posts)
 
 @app.route('/feed/<team_id>', methods=['GET'])
 def team_social_feed(team_id):

@@ -8,8 +8,6 @@ def scrape_reddit():
 
     subreddit = reddit.subreddit('Huskies')
 
-    print(subreddit)
-
     reddit_posts = []
 
     for post in subreddit.new(limit=10):

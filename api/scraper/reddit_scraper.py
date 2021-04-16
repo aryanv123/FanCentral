@@ -15,4 +15,3 @@ def scrape_reddit():
     for post in subreddit.new(limit=10):
         reddit_posts.append("htts://www.reddit.com" + post.permalink)
     return reddit_posts
-

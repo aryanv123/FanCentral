@@ -38,6 +38,7 @@ def social_feed():
     #     curr_post['PostURL'] = row[4]
     #     posts_arr.append(curr_post)
     postIDs = cursor.execute("SELECT * FROM Posts")
+    cursor.close()
     posts = []
     for postID in postIDs:
         curr_post = {}
@@ -45,6 +46,25 @@ def social_feed():
         posts.append(curr_post)
 
     return posts
+
+@app.route('/signup', methods=['POST'])
+def sign_up(username, password):
+    connection = pypyodbc.connect(r'DRIVER={ODBC Driver 17 for SQL Server}; SERVER=capstone.cgt2vqhhmy5k.us-east-2.rds.amazonaws.com; DATABASE=FanCentral; UID=admin; PWD=INFO490Capstone')
+    cursor = connection.cursor()
+
+    cursor.execute('INSERT INTO Users (RewardsCount, Username, Password) VALUES (0, {username}, {password})'.format(username=username, password=password))
+    cursor.close()
+
+@app.route('/login', methods=['GET'])
+def log_in(username, password):
+    connection = pypyodbc.connect(r'DRIVER={ODBC Driver 17 for SQL Server}; SERVER=capstone.cgt2vqhhmy5k.us-east-2.rds.amazonaws.com; DATABASE=FanCentral; UID=admin; PWD=INFO490Capstone')
+    cursor = connection.cursor()
+
+    output = cursor.execute('SELECT * FROM Users WHERE username={username} AND password={password}'.format(username=username, password=password))
+    if len(output) >= 1:
+        return True
+    else:
+        return False
 
 @app.route('/feed/<team_id>', methods=['GET'])
 def team_social_feed(team_id):

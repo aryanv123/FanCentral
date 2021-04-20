@@ -54,7 +54,7 @@ def sign_up():
     connection = pypyodbc.connect(r'DRIVER={ODBC Driver 17 for SQL Server}; SERVER=capstone.cgt2vqhhmy5k.us-east-2.rds.amazonaws.com; DATABASE=FanCentral; UID=admin; PWD=INFO490Capstone')
     cursor = connection.cursor()
 
-    cursor.execute('INSERT INTO Users (RewardsCount, Username, Password) VALUES (0, {username}, {password})'.format(username=username, password=password))
+    cursor.execute('INSERT INTO Users (RewardsCount, Username, Password) VALUES (0, \'{username}\', \'{password}\')'.format(username=username, password=password))
     cursor.close()
 
 @app.route('/login', methods=['GET'])

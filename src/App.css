@@ -25,8 +25,7 @@
 }
 
 .Teams {
-  border-right: 3px solid rgb(54, 54, 54);
-  height: 300vh;
+  height: 100%;
   margin-left: 0;
   padding-left: 0;
 }
@@ -48,9 +47,12 @@
   justify-content: center;
 }
 
-.Friends {
+.Feed {
   border-left: 3px solid rgb(54, 54, 54);
-  height: 300vh;
+  border-right: 3px solid rgb(54, 54, 54);
+  display: block;
+  justify-content: center;
+  align-content: center;
 }
 
 .Schedule {
@@ -89,6 +91,12 @@
   font-size: 40px;
   font-weight: 600;
   color: black;
+}
+
+.col{
+  display: flex;
+  align-content: center;
+  justify-content: center;
 }
 
 .Post {

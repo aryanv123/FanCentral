@@ -20,6 +20,9 @@ import post3 from './images/posts/3.png';
 import post5 from './images/posts/5.png';
 import post6 from './images/posts/6.png';
 import like from './images/like.png';
+import {Helmet} from "react-helmet";
+import { Tweet } from "react-twitter-widgets";
+
 
 function Home() {
     return(
@@ -33,24 +36,18 @@ function Home() {
                         <Link to='/uw'><img width='150' height='150' src={uwb} style={{marginBottom: '0.5rem'}}></img></Link>
                         <img width='150' height='150' src={uwf} style={{marginBottom: '0.5rem'}}></img>
                     </Col>
-                    <Col xl={8}>
+                    <Col xl={8} className='Feed'>
                         <Card style={{ width: '40rem', background: '#4B2E83', marginBottom: '2rem' }} className="Post">
                             <Card.Header className='d-flex justify-content-between' style={{fontSize: '20px'}}>From Twitter...</Card.Header>
                             <Card.Body>
-                                <img width='500' src={post1} />
+                                <Tweet tweetId='1381674911517667329' />
                             </Card.Body>
-                            <div style={{ marginLeft: '25rem', fontSize: '20px'}}>
-                                12<img width='40' src={like} />
-                            </div>
                         </Card>
                         <Card style={{ width: '40rem', background: '#4B2E83', marginBottom: '2rem' }} className="Post">
                             <Card.Header className='d-flex justify-content-between' style={{fontSize: '20px'}}>From Twitter...</Card.Header>
                             <Card.Body>
-                                <img width='500' src={post3} />
+                                <Tweet tweetId='1380561323226845184' />
                             </Card.Body>
-                            <div style={{ marginLeft: '25rem', fontSize: '20px'}}>
-                                34<img width='40' src={like} />
-                            </div>
                         </Card>
                         {/* <Card style={{ width: '40rem', background: '#4B2E83', marginBottom: '2rem' }} className="Post">
                             <Card.Header className='d-flex justify-content-between' style={{fontSize: '20px'}}>From Twitter...</Card.Header>
@@ -61,11 +58,20 @@ function Home() {
                         <Card style={{ width: '40rem', background: '#4B2E83', marginBottom: '2rem' }} className="Post">
                             <Card.Header className='d-flex justify-content-between' style={{fontSize: '20px'}}>From Twitter...</Card.Header>
                             <Card.Body>
-                                <img width='500' src={post6} />
+                                <Tweet tweetId='1379131724894859266' />
                             </Card.Body>
-                            <div style={{ marginLeft: '25rem', fontSize: '20px'}}>
-                                187<img width='40' src={like} />
-                            </div>
+                        </Card>
+                        <Card style={{ width: '40rem', background: '#4B2E83', marginBottom: '2rem' }} className="Post">
+                            <Card.Header className='d-flex justify-content-between' style={{fontSize: '20px'}}>From Twitter...</Card.Header>
+                            <Card.Body>
+                                <Tweet tweetId='1376619627824914433' />
+                            </Card.Body>
+                        </Card>
+                        <Card style={{ width: '40rem', background: '#4B2E83', marginBottom: '2rem' }} className="Post">
+                            <Card.Header className='d-flex justify-content-between' style={{fontSize: '20px'}}>From Twitter...</Card.Header>
+                            <Card.Body>
+                                <Tweet tweetId='1373318416908439554' />
+                            </Card.Body>
                         </Card>
                     </Col>
                     <Col xl={2} className="Friends">3</Col>

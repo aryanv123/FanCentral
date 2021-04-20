@@ -56,6 +56,7 @@ def sign_up():
 
     cursor.execute('INSERT INTO Users (RewardsCount, Username, Password) VALUES (0, \'{username}\', \'{password}\')'.format(username=username, password=password))
     cursor.close()
+    return "Success"
 
 @app.route('/login', methods=['GET'])
 def log_in():

@@ -66,9 +66,9 @@ def log_in():
 
     output = cursor.execute('SELECT * FROM Users WHERE username=\'{username}\' AND password=\'{password}\''.format(username=username, password=password))
     if len(output.fetchall()) >= 1:
-        return True
+        return "True"
     else:
-        return False
+        return "False"
 
 @app.route('/feed/<team_id>', methods=['GET'])
 def team_social_feed(team_id):

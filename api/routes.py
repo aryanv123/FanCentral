@@ -64,7 +64,7 @@ def log_in():
     connection = pypyodbc.connect(r'DRIVER={ODBC Driver 17 for SQL Server}; SERVER=capstone.cgt2vqhhmy5k.us-east-2.rds.amazonaws.com; DATABASE=FanCentral; UID=admin; PWD=INFO490Capstone')
     cursor = connection.cursor()
 
-    output = cursor.execute('SELECT * FROM Users WHERE username={username} AND password={password}'.format(username=username, password=password))
+    output = cursor.execute('SELECT * FROM Users WHERE username=\'{username}\' AND password=\'{password}\''.format(username=username, password=password))
     if len(output) >= 1:
         return True
     else:

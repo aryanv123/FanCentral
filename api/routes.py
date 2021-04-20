@@ -65,7 +65,7 @@ def log_in():
     cursor = connection.cursor()
 
     output = cursor.execute('SELECT * FROM Users WHERE username=\'{username}\' AND password=\'{password}\''.format(username=username, password=password))
-    if len(output) >= 1:
+    if len(output.fetchall()) >= 1:
         return True
     else:
         return False

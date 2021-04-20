@@ -48,7 +48,9 @@ def social_feed():
     return posts
 
 @app.route('/signup', methods=['POST'])
-def sign_up(username, password):
+def sign_up():
+    username = request.form['username']
+    password = request.form['password']
     connection = pypyodbc.connect(r'DRIVER={ODBC Driver 17 for SQL Server}; SERVER=capstone.cgt2vqhhmy5k.us-east-2.rds.amazonaws.com; DATABASE=FanCentral; UID=admin; PWD=INFO490Capstone')
     cursor = connection.cursor()
 

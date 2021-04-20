@@ -58,7 +58,9 @@ def sign_up():
     cursor.close()
 
 @app.route('/login', methods=['GET'])
-def log_in(username, password):
+def log_in():
+    username = request.args.get('username')
+    password = request.args.get('password')
     connection = pypyodbc.connect(r'DRIVER={ODBC Driver 17 for SQL Server}; SERVER=capstone.cgt2vqhhmy5k.us-east-2.rds.amazonaws.com; DATABASE=FanCentral; UID=admin; PWD=INFO490Capstone')
     cursor = connection.cursor()
 

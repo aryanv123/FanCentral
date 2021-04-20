@@ -6,6 +6,9 @@ import {
     Col
 } from 'react-bootstrap';
 import uw from './images/W.png';
+import Card from 'react-bootstrap/Card';
+import post1 from './images/posts/1.png';
+import like from './images/like.png';
 import sched from './images/sched.png';
 import roster from './images/uwroster.png';
 
@@ -23,7 +26,16 @@ function UW() {
                         <img src={sched} ></img>
                     </Col>
                     <Col xl={6} className='News'>
-                        NEWS
+                        FEED
+                        <Card style={{ width: '40rem', background: '#4B2E83', marginBottom: '2rem', marginLeft: '8rem' }} className="Post">
+                            <Card.Header className='d-flex justify-content-between' style={{fontSize: '20px'}}>From Twitter...</Card.Header>
+                            <Card.Body>
+                                <img width='500' src={post1} />
+                            </Card.Body>
+                            <div style={{ marginLeft: '25rem', fontSize: '20px'}}>
+                                12<img width='40' src={like} />
+                            </div>
+                        </Card>
                     </Col>
                     <Col xl={3} className="Roster">
                         Washington Huskies Roster

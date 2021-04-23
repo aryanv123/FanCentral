@@ -54,8 +54,10 @@ def sign_up():
     connection = pypyodbc.connect(r'DRIVER={ODBC Driver 17 for SQL Server}; SERVER=capstone.cgt2vqhhmy5k.us-east-2.rds.amazonaws.com; DATABASE=FanCentral; UID=admin; PWD=INFO490Capstone')
     cursor = connection.cursor()
 
-    cursor.execute('INSERT INTO Users (RewardsCount, Username, Password) VALUES (0, {username}, {password})'.format(username=username, password=password))
+    cursor.execute('INSERT INTO Users (RewardsCount, Username, Password) VALUES (0, \'{username}\', \'{password}\')'.format(username=username, password=password))
+    connection.commit()
     cursor.close()
+    return "Success"
 
 @app.route('/login', methods=['GET'])
 def log_in():
@@ -64,11 +66,11 @@ def log_in():
     connection = pypyodbc.connect(r'DRIVER={ODBC Driver 17 for SQL Server}; SERVER=capstone.cgt2vqhhmy5k.us-east-2.rds.amazonaws.com; DATABASE=FanCentral; UID=admin; PWD=INFO490Capstone')
     cursor = connection.cursor()
 
-    output = cursor.execute('SELECT * FROM Users WHERE username={username} AND password={password}'.format(username=username, password=password))
-    if len(output) >= 1:
-        return True
+    output = cursor.execute('SELECT * FROM Users WHERE Username=\'{username}\' AND Password=\'{password}\''.format(username=username, password=password))
+    if len(output.fetchall()) >= 1:
+        return "True"
     else:
-        return False
+        return "False"
 
 @app.route('/feed/<team_id>', methods=['GET'])
 def team_social_feed(team_id):
@@ -82,6 +84,7 @@ def team_social_feed(team_id):
         WHERE T.TeamID = {}
         ORDER BY P.LikesNumber
     '''.format(team_id))
+
     posts_arr = []
     for row in cursor.fetchall():
         curr_post = {}

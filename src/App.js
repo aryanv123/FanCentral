@@ -77,17 +77,26 @@ class App extends React.Component {
             </div>
       );
     }
+    let homePage;
+    if (!this.state.login) {
+      homePage = <div>
+                  <Route path='/FanCentral'>
+                    <Login logged={this.logged} />
+                  </Route>
+                 </div>
+    } else {
+      homePage = <div>
+                    <Route path='/FanCentral'>
+                      <Home />
+                    </Route>
+                  </div>
+    }
     return (
       <div className="App">
         <Router>
           {log}
           <Switch>
-            <Route exact path="/home">
-              <Home />
-            </Route>
-            <Route path='/FanCentral'>
-              <Login logged = {this.logged} logout = {this.logout} />
-            </Route>
+            {homePage}
             <Route path='/uw'>
               <UW />
             </Route>

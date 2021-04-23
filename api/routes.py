@@ -55,6 +55,7 @@ def sign_up():
     cursor = connection.cursor()
 
     cursor.execute('INSERT INTO Users (RewardsCount, Username, Password) VALUES (0, \'{username}\', \'{password}\')'.format(username=username, password=password))
+    cursor.commit()
     cursor.close()
     return "Success"
 
@@ -83,6 +84,7 @@ def team_social_feed(team_id):
         WHERE T.TeamID = {}
         ORDER BY P.LikesNumber
     '''.format(team_id))
+
     posts_arr = []
     for row in cursor.fetchall():
         curr_post = {}

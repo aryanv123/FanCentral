@@ -55,7 +55,7 @@ def sign_up():
     cursor = connection.cursor()
 
     cursor.execute('INSERT INTO Users (RewardsCount, Username, Password) VALUES (0, \'{username}\', \'{password}\')'.format(username=username, password=password))
-    cursor.commit()
+    connection.commit()
     cursor.close()
     return "Success"
 

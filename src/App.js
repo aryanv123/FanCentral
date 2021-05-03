@@ -61,7 +61,7 @@ class App extends React.Component {
                   <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ml-auto">
                       <Link to="/account">
-                        <Nav.Link style={{fontSize: '35px', color: 'white', paddingBottom: '1rem'}} className='float-right'>Aryan</Nav.Link>
+                        <Nav.Link style={{fontSize: '40px', fontWeight: 'bold', color: 'white', paddingBottom: '1rem'}} className='float-right'>Aryan</Nav.Link>
                         <img width='70' height='70' src={profile} style={{marginBottom: '0.5rem'}}></img>
                       </Link>
                     </Nav>

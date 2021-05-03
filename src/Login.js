@@ -12,9 +12,10 @@ import {
   } from "react-router-dom";
 
 async function loginUser(email, password) {
-    return fetch('http://localhost:5000/login?username=' + email + '&password=' + password, {
+    return fetch('http://127.0.0.1:5000/login?username=' + email + '&password=' + password, {
         method:"GET",
         headers: {
+            'Access-Control-Allow-Origin': '*',
             'Content-Type': 'application/json'
         },
         body: JSON.stringify()

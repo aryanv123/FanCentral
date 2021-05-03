@@ -14,14 +14,14 @@
 }
 
 .App-header {
-  background-color: #D7BE69;
+  background-color: #242526;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* font-size: calc(10px + 2vmin);
-  color: white; */
+  font-size: calc(10px + 2vmin);
+  color: white;
 }
 
 .Teams {
@@ -70,10 +70,10 @@
 }
 
 .Badge {
-  margin-top: 5rem;
+  margin-top: 0rem;
   width: 100%;
   text-align: right;
-  font-size: 50px;
+  font-size: 40px;
   font-weight: 700;
 }
 
@@ -88,9 +88,9 @@
 
 .card {
   margin-right: 3rem;
-  font-size: 40px;
-  font-weight: 600;
-  color: black;
+  font-size: 25px;
+  font-weight: 400;
+  color: white;
 }
 
 .col{
@@ -100,7 +100,8 @@
 }
 
 .Post {
-  color: #D7BE69;
+  color: white;
+  margin-left: 12rem;
 }
 
 .App-link {

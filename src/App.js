@@ -1,5 +1,5 @@
-import logo from './images/ball.png';
-import profile from './images/profile.png';
+import logo from './images/logo.png';
+import profile from './images/aryan.png';
 import reward from './images/present.png';
 import React, { Component } from 'react';
 import {
@@ -22,9 +22,11 @@ import './App.css';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { login: false }
+    this.state = { login: false,
+                    points: 500000}
     this.logged = this.logged.bind(this)
     this.logout = this.logout.bind(this)
+    this.handleBuy = this.handleBuy.bind(this)
   }
 
   logged() {
@@ -39,23 +41,28 @@ class App extends React.Component {
     })
   }
 
+  handleBuy(amount) {
+    this.setState({
+      points: (this.state.points - amount)
+    })
+  }
+
   render() {
     var log;
     console.log(window.location.pathname)
     if (this.state.login == true) {
       log = (<div>
-              <Navbar style={{background: '#4B2E83', display: 'flex'}} expand="lg" fixed='top'>
-                  <Link to="/home">
+              <Navbar style={{background: '#3a3b3c', display: 'flex'}} expand="lg" fixed='top'>
+                  <Link to="/FanCentral">
                     <img width='60' height='60' src={logo} style={{marginBottom: '0.5rem'}}></img>
-                    <Navbar.Brand style={{fontSize: '40px', marginLeft: '20px', marginBottom: '0', fontWeight: 'bold', color: '#D7BE69'}}>FanCentral</Navbar.Brand>
+                    <Navbar.Brand style={{fontSize: '40px', marginLeft: '20px', marginBottom: '0', fontWeight: 'bold', color: 'white'}}>FanCentral</Navbar.Brand>
                   </Link>
                   <Navbar.Toggle aria-controls="basic-navbar-nav" />
                   <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ml-auto">
-                      <Link to="/rewards"><img width='60' height='60' src={reward} style={{marginBottom: '0.5rem'}}></img></Link>
                       <Link to="/account">
-                        <Nav.Link style={{fontSize: '35px', color: '#D7BE69', paddingBottom: '1rem'}} className='float-right'>Aryan</Nav.Link>
-                        <img width='60' height='60' src={profile} style={{marginBottom: '0.5rem'}}></img>
+                        <Nav.Link style={{fontSize: '35px', color: 'white', paddingBottom: '1rem'}} className='float-right'>Aryan</Nav.Link>
+                        <img width='70' height='70' src={profile} style={{marginBottom: '0.5rem'}}></img>
                       </Link>
                     </Nav>
                   </Navbar.Collapse>
@@ -63,10 +70,10 @@ class App extends React.Component {
             </div>);
     } else {
       log = (<div>
-              <Navbar style={{background: '#4B2E83', display: 'flex'}} expand="lg" fixed='top'>
-                  <Link to="/home">
+              <Navbar style={{background: '#3a3b3c', display: 'flex'}} expand="lg" fixed='top'>
+                  <Link to="/FanCentral">
                     <img width='60' height='60' src={logo} style={{marginBottom: '0.5rem'}}></img>
-                    <Navbar.Brand style={{fontSize: '40px', marginLeft: '20px', marginBottom: '0', fontWeight: 'bold', color: '#D7BE69'}}>FanCentral</Navbar.Brand>
+                    <Navbar.Brand style={{fontSize: '40px', marginLeft: '20px', marginBottom: '0', fontWeight: 'bold', color: 'white'}}>FanCentral</Navbar.Brand>
                   </Link>
                   <Navbar.Toggle aria-controls="basic-navbar-nav" />
                   <Navbar.Collapse id="basic-navbar-nav">
@@ -79,17 +86,13 @@ class App extends React.Component {
     }
     let homePage;
     if (!this.state.login) {
-      homePage = <div>
-                  <Route path='/FanCentral'>
+      homePage =  <Route path='/FanCentral'>
                     <Login logged={this.logged} />
                   </Route>
-                 </div>
     } else {
-      homePage = <div>
-                    <Route path='/FanCentral'>
-                      <Home />
-                    </Route>
-                  </div>
+      homePage =  <Route path='/FanCentral'>
+                    <Home points={this.state.points} />
+                  </Route>    
     }
     return (
       <div className="App">
@@ -101,7 +104,7 @@ class App extends React.Component {
               <UW />
             </Route>
             <Route path='/rewards'>
-              <Rewards />
+              <Rewards points={this.state.points} buy={this.handleBuy} />
             </Route>
           </Switch>
         </Router>

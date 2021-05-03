@@ -53,7 +53,7 @@ class Login extends React.Component {
         
         return(
             <div className='App-header'>
-                <Modal.Dialog>
+                <Modal.Dialog style={{ color: 'black' }}>
                 <Modal.Header>
                     <Modal.Title>Welcome to FanCentral!</Modal.Title>
                 </Modal.Header>
@@ -64,7 +64,7 @@ class Login extends React.Component {
                             <Form.Label>Email address</Form.Label>
                             <Form.Control type="email" placeholder="Enter email" onChange={e => this.setState({ email: e.target.value })} />
                             <Form.Text className="text-muted">
-                            We'll never share your email with anyone else.
+                                We'll never share your email with anyone else.
                             </Form.Text>
                         </Form.Group>
 

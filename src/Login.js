@@ -96,7 +96,7 @@ class Login extends React.Component {
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control type="password" placeholder="Password" onChange={e => this.setState({ password: e.target.value })} />
                             </Form.Group>
-                            <Button type="submit" onClick={() => {this.props.logged(); this.handleLogin()}}>
+                            <Button type="submit" variant='secondary' onClick={() => {this.props.logged(); this.handleLogin()}}>
                                 Submit
                             </Button>
     

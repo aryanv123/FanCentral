@@ -12,10 +12,13 @@ import {
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import SplitButton from 'react-bootstrap/SplitButton';
+import Dropdown from 'react-bootstrap/Dropdown';
 import Home from './Home.js';
 import UW from './UW.js';
 import Rewards from './Reward.js';
-import Login from './Login.js'
+import Login from './Login.js';
+import Account from './account.js';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 
@@ -60,10 +63,16 @@ class App extends React.Component {
                   <Navbar.Toggle aria-controls="basic-navbar-nav" />
                   <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ml-auto">
-                      <Link to="/account">
-                        <Nav.Link style={{fontSize: '40px', fontWeight: 'bold', color: 'white', paddingBottom: '1rem'}} className='float-right'>Aryan</Nav.Link>
-                        <img width='70' height='70' src={profile} style={{marginBottom: '0.5rem'}}></img>
-                      </Link>
+                      <img width='70' height='70' src={profile} style={{marginBottom: '0.5rem'}}></img>
+                      <SplitButton
+                        menuAlign={{ lg: 'left' }}
+                        title="Aryan"
+                        id="dropdown-menu-align-responsive-2"
+                        variant='custom'
+                      >
+                        <Link to='/account' className="drop">Profile</Link>
+                        <Dropdown.Item onClick={this.logout}>Logout</Dropdown.Item>
+                      </SplitButton>
                     </Nav>
                   </Navbar.Collapse>
                 </Navbar>
@@ -105,6 +114,9 @@ class App extends React.Component {
             </Route>
             <Route path='/rewards'>
               <Rewards points={this.state.points} buy={this.handleBuy} />
+            </Route>
+            <Route path='/account'>
+              <Account />
             </Route>
           </Switch>
         </Router>

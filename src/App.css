@@ -64,6 +64,36 @@
   font-weight: bold;
 }
 
+.modal-background {
+  background-color: green;
+}
+
+.drop {
+  color: black;
+  padding-left: 25px;
+  padding-right: 100px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+.drop:hover {
+  background-color: rgb(230, 230, 230);
+  text-decoration: none;
+  color: black;
+}
+
+button.btn.btn-custom {
+  font-size: 40px;
+  font-weight: bold;
+  background-color: #3a3b3c;
+  border-color: #3a3b3c;
+  color: white;
+}
+
+button.btn.btn-custom:hover {
+  background-color: rgb(82, 82, 82);
+}
+
 .News {
   font-size: 40px;
   font-weight: 800;

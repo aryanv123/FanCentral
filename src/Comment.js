@@ -81,10 +81,11 @@ class CommentBox extends React.Component {
 class CommentForm extends React.Component {
     render() {
       return (
-        <form className="comment-form" onSubmit={this._handleSubmit.bind(this)}>
+        <form className="comment-form" id="commentForm" onSubmit={this._handleSubmit.bind(this)}>
           <div className="comment-form-fields">
-            <input placeholder="Name" required ref={(input) => this._author = input}></input><br />
-            <textarea placeholder="Comment" rows="4" required ref={(textarea) => this._body = textarea}></textarea>
+            {/* <input placeholder="Name" required ref={(input) => this._author = input}></input><br /> */}
+            <h4 style={{ color: 'black', display: 'flex'}}>Aryan</h4>
+            <textarea placeholder="Comment" rows="2" required ref={(textarea) => this._body = textarea}></textarea>
           </div>
           <div className="comment-form-actions">
             <button type="submit">Post Comment</button>
@@ -95,9 +96,11 @@ class CommentForm extends React.Component {
     
     _handleSubmit(event) { 
       event.preventDefault();   // prevents page from reloading on submit
-      let author = this._author;
+      // let author = this._author;
+      let author = "Aryan"
       let body = this._body;
       this.props.addComment(author.value, body.value);
+      document.getElementById('commentForm').reset();
     }
 } // end CommentForm component
   

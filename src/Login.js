@@ -24,7 +24,26 @@ async function loginUser(email, password) {
 }
 
 class Login extends React.Component {
- 
+    constructor(props) {
+        super(props);
+        this.state = {
+            show: false
+        };
+        this.handleShow = this.handleShow.bind(this);
+        this.handleClose = this.handleClose.bind(this);
+    }
+
+    handleShow() {
+        this.setState({
+            show: true
+        })
+    }
+
+    handleClose() {
+        this.setState({
+            show: false
+        })
+    }
 
     // login (username, password) {
     //     const http = new XMLHttpRequest()
@@ -54,33 +73,38 @@ class Login extends React.Component {
         
         return(
             <div className='App-header'>
-                <Modal.Dialog style={{ color: 'black' }}>
-                <Modal.Header>
-                    <Modal.Title>Welcome to FanCentral!</Modal.Title>
-                </Modal.Header>
+                <h1>Welcome to FanCentral!</h1>
+                <h2>The centralized sports hub where you can find all sports related information and posts all on one site!</h2>
+                <Button variant="secondary" onClick={this.handleShow}>Login</Button>
+                <Modal show={this.state.show} onHide={this.handleClose} animation={false} centered>
+                    <Modal.Dialog style={{ color: 'black' }}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Welcome to FanCentral!</Modal.Title>
+                    </Modal.Header>
 
-                <Modal.Body>
-                    <Form onSubmit={this.handleSubmit}>
-                        <Form.Group controlId="formBasicEmail">
-                            <Form.Label>Email address</Form.Label>
-                            <Form.Control type="email" placeholder="Enter email" onChange={e => this.setState({ email: e.target.value })} />
-                            <Form.Text className="text-muted">
-                                We'll never share your email with anyone else.
-                            </Form.Text>
-                        </Form.Group>
+                    <Modal.Body>
+                        <Form onSubmit={this.handleSubmit}>
+                            <Form.Group controlId="formBasicEmail">
+                                <Form.Label>Email address</Form.Label>
+                                <Form.Control type="email" placeholder="Enter email" onChange={e => this.setState({ email: e.target.value })} />
+                                <Form.Text className="text-muted">
+                                    We'll never share your email with anyone else.
+                                </Form.Text>
+                            </Form.Group>
 
-                        <Form.Group controlId="formBasicPassword">
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" placeholder="Password" onChange={e => this.setState({ password: e.target.value })} />
-                        </Form.Group>
-                        <Button type="submit" onClick={() => {this.props.logged(); this.handleLogin()}}>
-                            Submit
-                        </Button>
- 
-                    </Form>
-                </Modal.Body>
+                            <Form.Group controlId="formBasicPassword">
+                                <Form.Label>Password</Form.Label>
+                                <Form.Control type="password" placeholder="Password" onChange={e => this.setState({ password: e.target.value })} />
+                            </Form.Group>
+                            <Button type="submit" onClick={() => {this.props.logged(); this.handleLogin()}}>
+                                Submit
+                            </Button>
+    
+                        </Form>
+                    </Modal.Body>
 
-                </Modal.Dialog>
+                    </Modal.Dialog>
+                </Modal>
             </div>
         );
     }

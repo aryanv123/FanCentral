@@ -28,7 +28,7 @@ outline: none;
 .comment-box {
   max-width: 37.5rem;
   color: #fff;
-  background-color: #909090;
+  background-color: #302f2f;
   border-radius: 0.875rem;
   padding: 0.2rem 1rem 2rem;
   margin-left: 1rem;
@@ -45,7 +45,7 @@ outline: none;
 }
 input, textarea {
 border: none;
-border-bottom: 1px solid #404040;
+border-bottom: 1px solid #ffffff;
 font-size: 0.85rem;
 padding: 0.25rem 0;
 width: 99%;
@@ -61,15 +61,15 @@ textarea {
 }
 
 .comment-count {
-  color: #404040;
+  color: #dad8d8;
 }
 #comment-reveal {
   float: right;
-  background-color: #00BDFC;
+  background-color: #383838;
   color: #fff;
 }
 .comment {
-  border-top: 0.125rem solid #404040;
+  border-top: 0.125rem solid #7e7d7d;
 }
 .comment-body {
   font-style: italic;
@@ -80,7 +80,7 @@ textarea {
 }
 .comment-footer-delete {
   padding: 0.2rem 0;
-  color: #404040;
+  color: #a8a8a8;
   text-decoration: none;
 }
 .comment-footer-delete :hover {

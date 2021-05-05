@@ -66,7 +66,6 @@ class Rewards extends React.Component {
 
     render() {
 
-        let popup;
 
         return(
             <div className='App-header'>

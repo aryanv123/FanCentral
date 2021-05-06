@@ -1,7 +1,9 @@
 import './App.css';
 import uwb from './images/uwbasketball.png';
 import uwf from './images/uwfootball.jpg';
+import badge from './images/medal.png';
 import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
 import React, { Component } from "react";
 import {
     Container,
@@ -15,70 +17,119 @@ import {
     Link
   } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.css';
-import post1 from './images/posts/1.png';
-import post3 from './images/posts/3.png';
-import post5 from './images/posts/5.png';
-import post6 from './images/posts/6.png';
-import like from './images/like.png';
-import {Helmet} from "react-helmet";
 import { Tweet } from "react-twitter-widgets";
+import { Comment, CommentForm, CommentBox } from './Comment.js'
 
 
-function Home() {
-    return(
-        <div className='App-header'>
-            <Container fluid>
-                <Row>
-                    <Col xl={2} className="Teams">
-                        <div className='Teamtag'>
-                            Favorited Teams
-                        </div>
-                        <Link to='/uw'><img width='150' height='150' src={uwb} style={{marginBottom: '0.5rem'}}></img></Link>
-                        <img width='150' height='150' src={uwf} style={{marginBottom: '0.5rem'}}></img>
-                    </Col>
-                    <Col xl={8} className='Feed'>
-                        <Card style={{ width: '40rem', background: '#4B2E83', marginBottom: '2rem' }} className="Post">
-                            <Card.Header className='d-flex justify-content-between' style={{fontSize: '20px'}}>From Twitter...</Card.Header>
-                            <Card.Body>
-                                <Tweet tweetId='1381674911517667329' />
-                            </Card.Body>
-                        </Card>
-                        <Card style={{ width: '40rem', background: '#4B2E83', marginBottom: '2rem' }} className="Post">
-                            <Card.Header className='d-flex justify-content-between' style={{fontSize: '20px'}}>From Twitter...</Card.Header>
-                            <Card.Body>
-                                <Tweet tweetId='1380561323226845184' />
-                            </Card.Body>
-                        </Card>
-                        {/* <Card style={{ width: '40rem', background: '#4B2E83', marginBottom: '2rem' }} className="Post">
-                            <Card.Header className='d-flex justify-content-between' style={{fontSize: '20px'}}>From Twitter...</Card.Header>
-                            <Card.Body>
-                                <img width='500' src={post5} />
-                            </Card.Body>
-                        </Card> */}
-                        <Card style={{ width: '40rem', background: '#4B2E83', marginBottom: '2rem' }} className="Post">
-                            <Card.Header className='d-flex justify-content-between' style={{fontSize: '20px'}}>From Twitter...</Card.Header>
-                            <Card.Body>
-                                <Tweet tweetId='1379131724894859266' />
-                            </Card.Body>
-                        </Card>
-                        <Card style={{ width: '40rem', background: '#4B2E83', marginBottom: '2rem' }} className="Post">
-                            <Card.Header className='d-flex justify-content-between' style={{fontSize: '20px'}}>From Twitter...</Card.Header>
-                            <Card.Body>
-                                <Tweet tweetId='1376619627824914433' />
-                            </Card.Body>
-                        </Card>
-                        <Card style={{ width: '40rem', background: '#4B2E83', marginBottom: '2rem' }} className="Post">
-                            <Card.Header className='d-flex justify-content-between' style={{fontSize: '20px'}}>From Twitter...</Card.Header>
-                            <Card.Body>
-                                <Tweet tweetId='1373318416908439554' />
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                    <Col xl={2} className="Friends">3</Col>
-                </Row>
-            </Container>
-        </div>
-    );
+class Home extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {comment: false}
+        this.commentShow = this.commentShow.bind(this);
+    }
+
+    commentShow() {
+        this.setState(prevState => ({ comment: !prevState.comment }))
+    }
+
+    render() {
+        return(
+            <div className='App-header'>
+                <Container fluid>
+                    <Row>
+                        <Col xl={2} className="Teams">
+                            <div className='Teamtag'>
+                                My Teams
+                            </div>
+                            <Link to='/uw'><img width='150' height='150' src={uwb} style={{marginBottom: '0.5rem'}}></img></Link>
+                            <img width='150' height='150' src={uwf} style={{marginBottom: '0.5rem'}}></img>
+                        </Col>
+                        <Col xl={8} className='Feed'>
+                            <Card style={{ width: '40rem', background: '#303030', marginBottom: '2rem' }} className="Post">
+                                <Card.Header className='d-flex justify-content-between Teamtag' style={{ background: '#3a3b3c'}}>From Twitter...</Card.Header>
+                                <Card.Body>
+                                    <Tweet tweetId='1381674911517667329' />
+                                </Card.Body>
+                                <div style={{ display: 'flex', marginLeft: '1rem', marginBottom: '1rem' }}><Button variant="secondary" onClick={this.commentShow}>Comment</Button></div>
+                                { this.state.comment ? <CommentBox/> : null }
+                            </Card>
+                            <Card style={{ width: '45rem', background: '#303030', marginBottom: '2rem' }} className="Post">
+                                <Card.Header className='d-flex justify-content-between' style={{ background: '#3a3b3c'}}>From Reddit...</Card.Header>
+                                <Card.Body>
+                                <iframe id="reddit-embed" src="https://www.redditmedia.com/r/huskies/comments/9zvyuw/the_perfect_postgame_quote/?ref_source=embed&amp;ref=share&amp;embed=true&amp;theme=light" sandbox="allow-scripts allow-same-origin allow-popups" height="426" width="640" scrolling="no"></iframe>
+                                </Card.Body>
+                                <div style={{ display: 'flex', marginLeft: '1rem', marginBottom: '1rem' }}><Button variant="secondary" onClick={this.commentShow}>Comment</Button></div>
+                                { this.state.comment ? <CommentBox/> : null }
+                            </Card>
+                            <Card style={{ width: '40rem', background: '#303030', marginBottom: '2rem' }} className="Post">
+                                <Card.Header className='d-flex justify-content-between Teamtag' style={{ background: '#3a3b3c'}}>From Twitter...</Card.Header>
+                                <Card.Body>
+                                    <Tweet tweetId='1380561323226845184' />
+                                </Card.Body>
+                                <div style={{ display: 'flex', marginLeft: '1rem', marginBottom: '1rem' }}><Button variant="secondary" onClick={this.commentShow}>Comment</Button></div>
+                                { this.state.comment ? <CommentBox/> : null }
+                            </Card>
+                            <Card style={{ width: '45rem', background: '#303030', marginBottom: '2rem' }} className="Post">
+                                <Card.Header className='d-flex justify-content-between Teamtag' style={{ background: '#3a3b3c'}}>From Reddit...</Card.Header>
+                                <Card.Body>
+                                <iframe id="reddit-embed" src="https://www.redditmedia.com/r/huskies/comments/e47nt1/cougar_fans_trying_to_talk_about_our_season_in_a/?ref_source=embed&amp;ref=share&amp;embed=true&amp;theme=light" sandbox="allow-scripts allow-same-origin allow-popups" height="543" width="640" scrolling="no"></iframe>                            
+                                </Card.Body>
+                                <div style={{ display: 'flex', marginLeft: '1rem', marginBottom: '1rem' }}><Button variant="secondary" onClick={this.commentShow}>Comment</Button></div>
+                                { this.state.comment ? <CommentBox/> : null }
+                            </Card>
+                            <Card style={{ width: '40rem', background: '#303030', marginBottom: '2rem' }} className="Post">
+                                <Card.Header className='d-flex justify-content-between Teamtag' style={{ background: '#3a3b3c'}}>From Twitter...</Card.Header>
+                                <Card.Body>
+                                    <Tweet tweetId='1379131724894859266' />
+                                </Card.Body>
+                                <div style={{ display: 'flex', marginLeft: '1rem', marginBottom: '1rem' }}><Button variant="secondary" onClick={this.commentShow}>Comment</Button></div>
+                                { this.state.comment ? <CommentBox/> : null }
+                            </Card>
+                            <Card style={{ width: '40rem', background: '#303030', marginBottom: '2rem' }} className="Post">
+                                <Card.Header className='d-flex justify-content-between Teamtag' style={{ background: '#3a3b3c'}}>From Twitter...</Card.Header>
+                                <Card.Body>
+                                    <Tweet tweetId='1376619627824914433' />
+                                </Card.Body>
+                                <div style={{ display: 'flex', marginLeft: '1rem', marginBottom: '1rem' }}><Button variant="secondary" onClick={this.commentShow}>Comment</Button></div>
+                                { this.state.comment ? <CommentBox/> : null }
+                            </Card>
+                            <Card style={{ width: '45rem', background: '#303030', marginBottom: '2rem' }} className="Post">
+                                <Card.Header className='d-flex justify-content-between Teamtag' style={{ background: '#3a3b3c'}}>From Reddit...</Card.Header>
+                                <Card.Body>
+                                <iframe id="reddit-embed" src="https://www.redditmedia.com/r/huskies/comments/jz6et7/i_mean/?ref_source=embed&amp;ref=share&amp;embed=true" sandbox="allow-scripts allow-same-origin allow-popups" height="543" width="640" scrolling="no"></iframe>                            
+                                </Card.Body>
+                                <div style={{ display: 'flex', marginLeft: '1rem', marginBottom: '1rem' }}><Button variant="secondary" onClick={this.commentShow}>Comment</Button></div>
+                                { this.state.comment ? <CommentBox/> : null }
+                            </Card>
+                            <Card style={{ width: '40rem', background: '#303030', marginBottom: '2rem' }} className="Post">
+                                <Card.Header className='d-flex justify-content-between Teamtag' style={{ background: '#3a3b3c'}}>From Twitter...</Card.Header>
+                                <Card.Body>
+                                    <Tweet tweetId='1373318416908439554' />
+                                </Card.Body>
+                                <div style={{ display: 'flex', marginLeft: '1rem', marginBottom: '1rem' }}><Button variant="secondary" onClick={this.commentShow}>Comment</Button></div>
+                                { this.state.comment ? <CommentBox/> : null }
+                            </Card>
+                            <Card style={{ width: '45rem', background: '#303030', marginBottom: '2rem' }} className="Post">
+                                <Card.Header className='d-flex justify-content-between Teamtag' style={{ background: '#3a3b3c'}}>From Reddit...</Card.Header>
+                                <Card.Body>
+                                <iframe id="reddit-embed" src="https://www.redditmedia.com/r/huskies/comments/cxwerq/auburn_fans_get_it/?ref_source=embed&amp;ref=share&amp;embed=true" sandbox="allow-scripts allow-same-origin allow-popups" height="543" width="640" scrolling="no"></iframe>
+                                </Card.Body>
+                                <div style={{ display: 'flex', marginLeft: '1rem', marginBottom: '1rem' }}><Button variant="secondary" onClick={this.commentShow}>Comment</Button></div>
+                                { this.state.comment ? <CommentBox/> : null }
+                            </Card>
+                        </Col>
+                        <Col xl={2} className="Friends">
+                            <img width='120' src={badge} style={{marginBottom: '0.5rem', float: 'right' }} />
+                            {this.props.points}
+                            <Link to='/rewards'>
+                                <Button variant="secondary">Rewards Center</Button>
+                            </Link>
+                        </Col>
+                    </Row>
+                </Container>
+            </div>
+        )
+    }
 }
 
 export default Home;

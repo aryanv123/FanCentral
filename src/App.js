@@ -13,19 +13,24 @@ import {
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import SplitButton from 'react-bootstrap/SplitButton';
+import Dropdown from 'react-bootstrap/Dropdown';
 import Home from './Home.js';
 import UW from './UW.js';
 import Rewards from './Reward.js';
-import Login from './Login.js'
+import Login from './Login.js';
+import Account from './account.js';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { login: false }
+    this.state = { login: false,
+                    points: 500000}
     this.logged = this.logged.bind(this)
     this.logout = this.logout.bind(this)
+    this.handleBuy = this.handleBuy.bind(this)
   }
 
   logged() {
@@ -40,34 +45,45 @@ class App extends React.Component {
     })
   }
 
+  handleBuy(amount) {
+    this.setState({
+      points: (this.state.points - amount)
+    })
+  }
+
   render() {
     var log;
     console.log(window.location.pathname)
     if (this.state.login == true) {
       log = (<div>
-              <Navbar style={{background: '#4B2E83', display: 'flex'}} expand="lg" fixed='top'>
-                  <Link to="/home">
+              <Navbar style={{background: '#3a3b3c', display: 'flex'}} expand="lg" fixed='top'>
+                  <Link to="/FanCentral">
                     <img width='60' height='60' src={logo} style={{marginBottom: '0.5rem'}}></img>
-                    <Navbar.Brand style={{fontSize: '40px', marginLeft: '20px', marginBottom: '0', fontWeight: 'bold', color: '#D7BE69'}}>FanCentral</Navbar.Brand>
+                    <Navbar.Brand style={{fontSize: '40px', marginLeft: '20px', marginBottom: '0', fontWeight: 'bold', color: 'white'}}>FanCentral</Navbar.Brand>
                   </Link>
                   <Navbar.Toggle aria-controls="basic-navbar-nav" />
                   <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ml-auto">
-                      <Link to="/rewards"><img width='60' height='60' src={reward} style={{marginBottom: '0.5rem'}}></img></Link>
-                      <Link to="/account">
-                        <Nav.Link style={{fontSize: '35px', color: '#D7BE69', paddingBottom: '1rem'}} className='float-right'>Aryan</Nav.Link>
-                        <img width='60' height='60' src={profile} style={{marginBottom: '0.5rem'}}></img>
-                      </Link>
+                      <img width='70' height='70' src={profile} style={{marginBottom: '0.5rem'}}></img>
+                      <SplitButton
+                        menuAlign={{ lg: 'left' }}
+                        title="Aryan"
+                        id="dropdown-menu-align-responsive-2"
+                        variant='custom'
+                      >
+                        <Link to='/account' className="drop">Profile</Link>
+                        <Dropdown.Item onClick={this.logout}>Logout</Dropdown.Item>
+                      </SplitButton>
                     </Nav>
                   </Navbar.Collapse>
                 </Navbar>
             </div>);
     } else {
       log = (<div>
-              <Navbar style={{background: '#4B2E83', display: 'flex'}} expand="lg" fixed='top'>
-                  <Link to="/home">
+              <Navbar style={{background: '#3a3b3c', display: 'flex'}} expand="lg" fixed='top'>
+                  <Link to="/FanCentral">
                     <img width='60' height='60' src={logo} style={{marginBottom: '0.5rem'}}></img>
-                    <Navbar.Brand style={{fontSize: '40px', marginLeft: '20px', marginBottom: '0', fontWeight: 'bold', color: '#D7BE69'}}>FanCentral</Navbar.Brand>
+                    <Navbar.Brand style={{fontSize: '40px', marginLeft: '20px', marginBottom: '0', fontWeight: 'bold', color: 'white'}}>FanCentral</Navbar.Brand>
                   </Link>
                   <Navbar.Toggle aria-controls="basic-navbar-nav" />
                   <Navbar.Collapse id="basic-navbar-nav">
@@ -78,22 +94,30 @@ class App extends React.Component {
             </div>
       );
     }
+    let homePage;
+    if (!this.state.login) {
+      homePage =  <Route path='/FanCentral'>
+                    <Login logged={this.logged} />
+                  </Route>
+    } else {
+      homePage =  <Route path='/FanCentral'>
+                    <Home points={this.state.points} />
+                  </Route>    
+    }
     return (
       <div className="App">
         <Router>
           {log}
           <Switch>
-            <Route exact path="/home">
-              <Home />
-            </Route>
-            <Route path='/FanCentral'>
-              <Login logged = {this.logged} logout = {this.logout} />
-            </Route>
+            {homePage}
             <Route path='/uw'>
               <UW />
             </Route>
             <Route path='/rewards'>
-              <Rewards />
+              <Rewards points={this.state.points} buy={this.handleBuy} />
+            </Route>
+            <Route path='/account'>
+              <Account />
             </Route>
           </Switch>
         </Router>

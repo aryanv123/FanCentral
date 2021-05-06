@@ -1,5 +1,5 @@
 import './App.css';
-import React, { Component } from "react";
+import React from "react";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import profile from './images/aryan.png';
@@ -11,7 +11,7 @@ class Account extends React.Component {
         return(
             <div className='App-header'>
                 <h1 style={{}}>Account Profile</h1>
-                <img width='250' height='250' src={profile} style={{marginBottom: '0.5rem'}}></img>
+                <img width='250' height='250' alt="text" src={profile} style={{marginBottom: '0.5rem'}}></img>
                 <Form>
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label>Name</Form.Label>

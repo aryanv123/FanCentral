@@ -1,3 +1,4 @@
+/* eslint-disable */
 import logo from './images/ball.png';
 import profile from './images/profile.png';
 import reward from './images/present.png';

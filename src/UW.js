@@ -17,29 +17,29 @@ function UW() {
         <div className='App-header'>
             <Container fluid>
                 <Row className='Teamhead'>
-                    <img width='170' height='100' src={uw} style={{marginBottom: '0.5rem', marginRight: '20px'}}></img>
+                    <img width='170' height='100' alt="text" src={uw} style={{marginBottom: '0.5rem', marginRight: '20px'}}></img>
                     Washington Husky Men's Basketball Team
                 </Row>
                 <Row>
                     <Col xl={3} className="Schedule">
                         Team Schedule
-                        <img src={sched} ></img>
+                        <img src={sched} alt="text"></img>
                     </Col>
                     <Col xl={6} className='News'>
                         FEED
                         <Card style={{ width: '40rem', background: '#4B2E83', marginBottom: '2rem', marginLeft: '8rem' }} className="Post">
                             <Card.Header className='d-flex justify-content-between' style={{fontSize: '20px'}}>From Twitter...</Card.Header>
                             <Card.Body>
-                                <img width='500' src={post1} />
+                                <img width='500' alt="text" src={post1} />
                             </Card.Body>
                             <div style={{ marginLeft: '25rem', fontSize: '20px'}}>
-                                12<img width='40' src={like} />
+                                12<img width='40' alt="text" src={like} />
                             </div>
                         </Card>
                     </Col>
                     <Col xl={3} className="Roster">
                         Washington Huskies Roster
-                        <img width='450' src={roster} ></img>
+                        <img width='450' alt="text" src={roster} ></img>
                     </Col>
                 </Row>
             </Container>

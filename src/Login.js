@@ -1,15 +1,9 @@
 import './App.css';
-import React, { Component } from "react";
+import React from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-  } from "react-router-dom";
 
 async function loginUser(email, password) {
     return fetch('http://127.0.0.1:5000/login?username=' + email + '&password=' + password, {

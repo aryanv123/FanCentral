@@ -1,5 +1,5 @@
 import './App.css';
-import React, { Component } from "react";
+import React from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
@@ -9,20 +9,6 @@ import basketball from './images/basketballGame.jpg';
 import jersey from './images/jersey.jpg';
 import football from './images/footballGame.jpg';
 import hoodie from './images/hoodie.png';
-import {
-    Container,
-    Row,
-    Col
-} from 'react-bootstrap';
-import uw from './images/W.png';
-import sched from './images/sched.png';
-import roster from './images/uwroster.png';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-  } from "react-router-dom";
 
 class Rewards extends React.Component {
     constructor(props) {
@@ -71,7 +57,7 @@ class Rewards extends React.Component {
             <div className='App-header'>
                 <h1 style={{ marginTop: '10rem', fontWeight: '700', fontSize: '50px' }}>Rewards Center</h1>
                 <div className='Badge'>
-                    <img width='120' src={badge} style={{marginBottom: '0.5rem', float: 'right' }} /> 
+                    <img width='120' alt="text" src={badge} style={{marginBottom: '0.5rem', float: 'right' }} /> 
                     {this.props.points}
                 </div>
                 <div style={{ display: 'flex'}}>
@@ -79,7 +65,7 @@ class Rewards extends React.Component {
                         <div>
                             UW HOODIE
                         </div>
-                        <img width='200' src={hoodie} style={{ marginLeft: '8rem' }} />
+                        <img width='200' src={hoodie} alt="text" style={{ marginLeft: '8rem' }} />
                         <Button variant='secondary' style={{ fontSize: '20px', position: 'absolute', bottom: '0', width: '100%' }} onClick={() => {
                             if((this.props.points - 50000) >= 0) {
                                 this.props.buy(50000); this.handleShow("UW HOODIE")
@@ -94,7 +80,7 @@ class Rewards extends React.Component {
                         <div>
                             UW JERSEY 
                         </div>
-                        <img width='200' src={jersey} style={{ marginLeft: '8rem' }} />
+                        <img width='200' alt="text" src={jersey} style={{ marginLeft: '8rem' }} />
                         <Button variant='secondary' style={{ fontSize: '20px', position: 'absolute', bottom: '0', width: '100%' }} onClick={() => {
                             if((this.props.points - 75000) >= 0) {
                                 this.props.buy(75000); this.handleShow("UW JERSEY")
@@ -111,7 +97,7 @@ class Rewards extends React.Component {
                         <div>
                             UW HOME FOOTBALL TICKETS (2)
                         </div>
-                        <img width='300' src={football} style={{ marginLeft: '5rem' }} />
+                        <img width='300' alt="text" src={football} style={{ marginLeft: '5rem' }} />
                         <Button variant='secondary' style={{ fontSize: '20px', position: 'absolute', bottom: '0', width: '100%' }} onClick={() => {
                             if((this.props.points - 200000) >= 0) {
                                 this.props.buy(200000); this.handleShow("UW HOME FOOTBALL TICKETS (2)")
@@ -126,7 +112,7 @@ class Rewards extends React.Component {
                         <div>
                             UW HOME B-BALL TICKETS (2)
                         </div>
-                        <img width='300' src={basketball} style={{ marginLeft: '5rem' }} />
+                        <img width='300' alt="text" src={basketball} style={{ marginLeft: '5rem' }} />
                         <Button variant='secondary' style={{ fontSize: '20px', position: 'absolute', bottom: '0', width: '100%' }} onClick={() => {
                             if((this.props.points - 200000) >= 0) {
                                 this.props.buy(200000); this.handleShow("UW HOME B-BALL TICKETS (2)")

@@ -45,7 +45,7 @@ class Home extends React.Component {
                             <img width='150' height='150' src={uwf} style={{marginBottom: '0.5rem'}}></img>
                         </Col>
                         <Col xl={8} className='Feed'>
-                            <Card style={{ width: '40rem', background: '#303030', marginBottom: '2rem' }} className="Post">
+                            <Card style={{ width: '40rem', background: '#303030', marginBottom: '2rem', marginLeft: '17rem' }} className="Post">
                                 <Card.Header className='d-flex justify-content-between Teamtag' style={{ background: '#3a3b3c'}}>From Twitter...</Card.Header>
                                 <Card.Body>
                                     <Tweet tweetId='1381674911517667329' />
@@ -61,7 +61,7 @@ class Home extends React.Component {
                                 <div style={{ display: 'flex', marginLeft: '1rem', marginBottom: '1rem' }}><Button variant="secondary" onClick={this.commentShow}>Comment</Button></div>
                                 { this.state.comment ? <CommentBox/> : null }
                             </Card>
-                            <Card style={{ width: '40rem', background: '#303030', marginBottom: '2rem' }} className="Post">
+                            <Card style={{ width: '40rem', background: '#303030', marginBottom: '2rem', marginLeft: '17rem' }} className="Post">
                                 <Card.Header className='d-flex justify-content-between Teamtag' style={{ background: '#3a3b3c'}}>From Twitter...</Card.Header>
                                 <Card.Body>
                                     <Tweet tweetId='1380561323226845184' />
@@ -77,7 +77,7 @@ class Home extends React.Component {
                                 <div style={{ display: 'flex', marginLeft: '1rem', marginBottom: '1rem' }}><Button variant="secondary" onClick={this.commentShow}>Comment</Button></div>
                                 { this.state.comment ? <CommentBox/> : null }
                             </Card>
-                            <Card style={{ width: '40rem', background: '#303030', marginBottom: '2rem' }} className="Post">
+                            <Card style={{ width: '40rem', background: '#303030', marginBottom: '2rem', marginLeft: '17rem' }} className="Post">
                                 <Card.Header className='d-flex justify-content-between Teamtag' style={{ background: '#3a3b3c'}}>From Twitter...</Card.Header>
                                 <Card.Body>
                                     <Tweet tweetId='1379131724894859266' />
@@ -85,7 +85,7 @@ class Home extends React.Component {
                                 <div style={{ display: 'flex', marginLeft: '1rem', marginBottom: '1rem' }}><Button variant="secondary" onClick={this.commentShow}>Comment</Button></div>
                                 { this.state.comment ? <CommentBox/> : null }
                             </Card>
-                            <Card style={{ width: '40rem', background: '#303030', marginBottom: '2rem' }} className="Post">
+                            <Card style={{ width: '40rem', background: '#303030', marginBottom: '2rem', marginLeft: '17rem' }} className="Post">
                                 <Card.Header className='d-flex justify-content-between Teamtag' style={{ background: '#3a3b3c'}}>From Twitter...</Card.Header>
                                 <Card.Body>
                                     <Tweet tweetId='1376619627824914433' />
@@ -101,7 +101,7 @@ class Home extends React.Component {
                                 <div style={{ display: 'flex', marginLeft: '1rem', marginBottom: '1rem' }}><Button variant="secondary" onClick={this.commentShow}>Comment</Button></div>
                                 { this.state.comment ? <CommentBox/> : null }
                             </Card>
-                            <Card style={{ width: '40rem', background: '#303030', marginBottom: '2rem' }} className="Post">
+                            <Card style={{ width: '40rem', background: '#303030', marginBottom: '2rem', marginLeft: '17rem' }} className="Post">
                                 <Card.Header className='d-flex justify-content-between Teamtag' style={{ background: '#3a3b3c'}}>From Twitter...</Card.Header>
                                 <Card.Body>
                                     <Tweet tweetId='1373318416908439554' />

@@ -8,9 +8,9 @@ class CommentBox extends React.Component {
       this.state = {
         showComments: false,
         comments: [
-          {id: 1, author: "landiggity", body: "This is my first comment on this forum so don't be a dick"},
+          {id: 1, author: "landiggity", body: "Wow that is so cool!"},
           {id: 2, author: "scarlett-jo", body: "That's a mighty fine comment you've got there my good looking fellow..."},
-          {id: 3, author: "rosco", body: "What is the meaning of all of this 'React' mumbo-jumbo?"}
+          {id: 3, author: "rosco", body: "Yeet"}
         ]
       };
     }
@@ -99,7 +99,8 @@ class CommentForm extends React.Component {
       // let author = this._author;
       let author = "Aryan"
       let body = this._body;
-      this.props.addComment(author.value, body.value);
+      // this.props.addComment(author.value, body.value);
+      this.props.addComment("Aryan", body.value);
       document.getElementById('commentForm').reset();
     }
 } // end CommentForm component

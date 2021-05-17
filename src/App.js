@@ -1,5 +1,5 @@
-import logo from './images/ball.png';
-import profile from './images/profile.png';
+import logo from './images/logo.png';
+import profile from './images/aryan.png';
 import React from 'react';
 import {
   BrowserRouter as Router,

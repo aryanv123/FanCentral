@@ -54,8 +54,9 @@ class Login extends React.Component {
     }
 
     handleLogin() {
-        console.log(loginUser(this.state.email, this.state.password))
-        if (this.state.email.toLowerCase() == "aryan@gmail.com" && this.state.password == "Password") {
+        data = loginUser(this.state.email, this.state.password)
+        console.log(data)
+        if (data.loggedIn == True) {
             this.props.logged();
         } else {
             this.setState({

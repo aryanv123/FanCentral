@@ -7,15 +7,9 @@ import Form from 'react-bootstrap/Form';
 import Alert from 'react-bootstrap/Alert';
 
 async function loginUser(email, password) {
-    return fetch('http://127.0.0.1:5000/login?username=' + email + '&password=' + password, {
-        method:"GET",
-        headers: {
-            'Access-Control-Allow-Origin': '*',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify()
-    })
-        .then(data => data.json())
+    fetch('http://127.0.0.1:5000/login?username=' + email + '&password=' + password)
+        .then(response => response.json())
+        .then(data => console.log(data));
 }
 
 class Login extends React.Component {

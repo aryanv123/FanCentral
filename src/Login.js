@@ -10,8 +10,6 @@ async function loginUser(email, password) {
     fetch('http://127.0.0.1:5000/login?username=' + email + '&password=' + password)
         .then(response => response.json())
         .then(data => console.log(data));
-    
-    return;
 }
 
 class Login extends React.Component {
@@ -56,17 +54,19 @@ class Login extends React.Component {
     }
 
     async handleLogin() {
-        let data = await loginUser(this.state.email, this.state.password)
-
-        console.log(data)
-        if (data.loggedIn === "True") {
-            this.props.logged();
-        } else {
-            this.setState({
-                error: true
-            })
-        }
-        console.log(data.loggedIn)
+        fetch('http://127.0.0.1:5000/login?username=' + this.state.email + '&password=' + this.state.password)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            console.log(data.loggedIn)
+            if (data.loggedIn === "True") {
+                this.props.logged();
+            } else {
+                this.setState({
+                    error: true
+                })
+            }
+        })
     }
 
     render() {

@@ -47,6 +47,7 @@ class CommentBox extends React.Component {
         author,
         body
       };
+      this.props.addPoints();
       this.setState({ comments: this.state.comments.concat([comment]) }); // *new array references help React stay fast, so concat works better than push here.
     }
     

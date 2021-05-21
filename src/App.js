@@ -27,6 +27,7 @@ class App extends React.Component {
     this.logged = this.logged.bind(this)
     this.logout = this.logout.bind(this)
     this.handleBuy = this.handleBuy.bind(this)
+    this.addPoints = this.addPoints.bind(this)
   }
 
   logged() {
@@ -44,6 +45,12 @@ class App extends React.Component {
   handleBuy(amount) {
     this.setState({
       points: (this.state.points - amount)
+    })
+  }
+
+  addPoints() {
+    this.setState({
+      points: (this.state.points + 100)
     })
   }
 
@@ -97,7 +104,7 @@ class App extends React.Component {
                   </Route>
     } else {
       homePage =  <Route path='/FanCentral'>
-                    <Home points={this.state.points} />
+                    <Home points={this.state.points} addPoints={this.addPoints} />
                   </Route>    
     }
     return (

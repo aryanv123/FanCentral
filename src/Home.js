@@ -21,12 +21,18 @@ import { CommentBox } from './Comment.js'
 class Home extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {comment: false}
+        this.state = {comment: new Array(9).fill(false)}
         this.commentShow = this.commentShow.bind(this);
     }
 
-    commentShow() {
-        this.setState(prevState => ({ comment: !prevState.comment }))
+    commentShow(index) {
+        var clone = Object.assign( {}, this.state.comment);
+        if (clone[index] == false) {
+            clone[index] = true;
+        } else {
+            clone[index] = false;
+        }
+        this.setState({ comment: clone })
     }
 
     render() {
@@ -47,72 +53,72 @@ class Home extends React.Component {
                                 <Card.Body>
                                     <Tweet tweetId='1381674911517667329' />
                                 </Card.Body>
-                                <div style={{ display: 'flex', marginLeft: '1rem', marginBottom: '1rem' }}><Button variant="secondary" onClick={this.commentShow}>Comment</Button></div>
-                                { this.state.comment ? <CommentBox/> : null }
+                                <div style={{ display: 'flex', marginLeft: '1rem', marginBottom: '1rem' }}><Button variant="secondary" onClick={() => this.commentShow(0)}>Comment</Button></div>
+                                { this.state.comment[0] ? <CommentBox addPoints={this.props.addPoints}/> : null }
                             </Card>
                             <Card style={{ width: '45rem', background: '#303030', marginBottom: '2rem' }} className="Post">
                                 <Card.Header className='d-flex justify-content-between' style={{ background: '#3a3b3c'}}>From Reddit...</Card.Header>
                                 <Card.Body>
                                 <iframe id="reddit-embed" title="1" src="https://www.redditmedia.com/r/huskies/comments/9zvyuw/the_perfect_postgame_quote/?ref_source=embed&amp;ref=share&amp;embed=true&amp;theme=light" sandbox="allow-scripts allow-same-origin allow-popups" height="426" width="640" scrolling="no"></iframe>
                                 </Card.Body>
-                                <div style={{ display: 'flex', marginLeft: '1rem', marginBottom: '1rem' }}><Button variant="secondary" onClick={this.commentShow}>Comment</Button></div>
-                                { this.state.comment ? <CommentBox/> : null }
+                                <div style={{ display: 'flex', marginLeft: '1rem', marginBottom: '1rem' }}><Button variant="secondary" onClick={() => this.commentShow(1)}>Comment</Button></div>
+                                { this.state.comment[1] ? <CommentBox/> : null }
                             </Card>
                             <Card style={{ width: '40rem', background: '#303030', marginBottom: '2rem', marginLeft: '17rem' }} className="Post">
                                 <Card.Header className='d-flex justify-content-between Teamtag' style={{ background: '#3a3b3c'}}>From Twitter...</Card.Header>
                                 <Card.Body>
                                     <Tweet tweetId='1380561323226845184' />
                                 </Card.Body>
-                                <div style={{ display: 'flex', marginLeft: '1rem', marginBottom: '1rem' }}><Button variant="secondary" onClick={this.commentShow}>Comment</Button></div>
-                                { this.state.comment ? <CommentBox/> : null }
+                                <div style={{ display: 'flex', marginLeft: '1rem', marginBottom: '1rem' }}><Button variant="secondary" onClick={() => this.commentShow(2)}>Comment</Button></div>
+                                { this.state.comment[2] ? <CommentBox/> : null }
                             </Card>
                             <Card style={{ width: '45rem', background: '#303030', marginBottom: '2rem' }} className="Post">
                                 <Card.Header className='d-flex justify-content-between Teamtag' style={{ background: '#3a3b3c'}}>From Reddit...</Card.Header>
                                 <Card.Body>
                                 <iframe id="reddit-embed" title="2" src="https://www.redditmedia.com/r/huskies/comments/e47nt1/cougar_fans_trying_to_talk_about_our_season_in_a/?ref_source=embed&amp;ref=share&amp;embed=true&amp;theme=light" sandbox="allow-scripts allow-same-origin allow-popups" height="543" width="640" scrolling="no"></iframe>                            
                                 </Card.Body>
-                                <div style={{ display: 'flex', marginLeft: '1rem', marginBottom: '1rem' }}><Button variant="secondary" onClick={this.commentShow}>Comment</Button></div>
-                                { this.state.comment ? <CommentBox/> : null }
+                                <div style={{ display: 'flex', marginLeft: '1rem', marginBottom: '1rem' }}><Button variant="secondary" onClick={() => this.commentShow(3)}>Comment</Button></div>
+                                { this.state.comment[3] ? <CommentBox/> : null }
                             </Card>
                             <Card style={{ width: '40rem', background: '#303030', marginBottom: '2rem', marginLeft: '17rem' }} className="Post">
                                 <Card.Header className='d-flex justify-content-between Teamtag' style={{ background: '#3a3b3c'}}>From Twitter...</Card.Header>
                                 <Card.Body>
                                     <Tweet tweetId='1379131724894859266' />
                                 </Card.Body>
-                                <div style={{ display: 'flex', marginLeft: '1rem', marginBottom: '1rem' }}><Button variant="secondary" onClick={this.commentShow}>Comment</Button></div>
-                                { this.state.comment ? <CommentBox/> : null }
+                                <div style={{ display: 'flex', marginLeft: '1rem', marginBottom: '1rem' }}><Button variant="secondary" onClick={() => this.commentShow(4)}>Comment</Button></div>
+                                { this.state.comment[4] ? <CommentBox/> : null }
                             </Card>
                             <Card style={{ width: '40rem', background: '#303030', marginBottom: '2rem', marginLeft: '17rem' }} className="Post">
                                 <Card.Header className='d-flex justify-content-between Teamtag' style={{ background: '#3a3b3c'}}>From Twitter...</Card.Header>
                                 <Card.Body>
                                     <Tweet tweetId='1376619627824914433' />
                                 </Card.Body>
-                                <div style={{ display: 'flex', marginLeft: '1rem', marginBottom: '1rem' }}><Button variant="secondary" onClick={this.commentShow}>Comment</Button></div>
-                                { this.state.comment ? <CommentBox/> : null }
+                                <div style={{ display: 'flex', marginLeft: '1rem', marginBottom: '1rem' }}><Button variant="secondary" onClick={() => this.commentShow(5)}>Comment</Button></div>
+                                { this.state.comment[5] ? <CommentBox/> : null }
                             </Card>
                             <Card style={{ width: '45rem', background: '#303030', marginBottom: '2rem' }} className="Post">
                                 <Card.Header className='d-flex justify-content-between Teamtag' style={{ background: '#3a3b3c'}}>From Reddit...</Card.Header>
                                 <Card.Body>
                                 <iframe id="reddit-embed" title="3" src="https://www.redditmedia.com/r/huskies/comments/jz6et7/i_mean/?ref_source=embed&amp;ref=share&amp;embed=true" sandbox="allow-scripts allow-same-origin allow-popups" height="543" width="640" scrolling="no"></iframe>                            
                                 </Card.Body>
-                                <div style={{ display: 'flex', marginLeft: '1rem', marginBottom: '1rem' }}><Button variant="secondary" onClick={this.commentShow}>Comment</Button></div>
-                                { this.state.comment ? <CommentBox/> : null }
+                                <div style={{ display: 'flex', marginLeft: '1rem', marginBottom: '1rem' }}><Button variant="secondary" onClick={() => this.commentShow(6)}>Comment</Button></div>
+                                { this.state.comment[6] ? <CommentBox/> : null }
                             </Card>
                             <Card style={{ width: '40rem', background: '#303030', marginBottom: '2rem', marginLeft: '17rem' }} className="Post">
                                 <Card.Header className='d-flex justify-content-between Teamtag' style={{ background: '#3a3b3c'}}>From Twitter...</Card.Header>
                                 <Card.Body>
                                     <Tweet tweetId='1373318416908439554' />
                                 </Card.Body>
-                                <div style={{ display: 'flex', marginLeft: '1rem', marginBottom: '1rem' }}><Button variant="secondary" onClick={this.commentShow}>Comment</Button></div>
-                                { this.state.comment ? <CommentBox/> : null }
+                                <div style={{ display: 'flex', marginLeft: '1rem', marginBottom: '1rem' }}><Button variant="secondary" onClick={() => this.commentShow(7)}>Comment</Button></div>
+                                { this.state.comment[7] ? <CommentBox/> : null }
                             </Card>
                             <Card style={{ width: '45rem', background: '#303030', marginBottom: '2rem' }} className="Post">
                                 <Card.Header className='d-flex justify-content-between Teamtag' style={{ background: '#3a3b3c'}}>From Reddit...</Card.Header>
                                 <Card.Body>
                                 <iframe id="reddit-embed" title="4" src="https://www.redditmedia.com/r/huskies/comments/cxwerq/auburn_fans_get_it/?ref_source=embed&amp;ref=share&amp;embed=true" sandbox="allow-scripts allow-same-origin allow-popups" height="543" width="640" scrolling="no"></iframe>
                                 </Card.Body>
-                                <div style={{ display: 'flex', marginLeft: '1rem', marginBottom: '1rem' }}><Button variant="secondary" onClick={this.commentShow}>Comment</Button></div>
-                                { this.state.comment ? <CommentBox/> : null }
+                                <div style={{ display: 'flex', marginLeft: '1rem', marginBottom: '1rem' }}><Button variant="secondary" onClick={() => this.commentShow(8)}>Comment</Button></div>
+                                { this.state.comment[8] ? <CommentBox/> : null }
                             </Card>
                         </Col>
                         <Col xl={2} className="Friends">

@@ -11,6 +11,7 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 
 # Get social feed
 @app.route('/feed', methods=['GET'])
+@cross_origin()
 def social_feed():
     # TODO: Get first 10 Posts with the most likes
 
@@ -52,6 +53,7 @@ def social_feed():
     return posts_dict
 
 @app.route('/signup', methods=['POST'])
+@cross_origin()
 def sign_up():
     username = request.form['username']
     password = request.form['password']
@@ -64,6 +66,7 @@ def sign_up():
     return "Success"
 
 @app.route('/login', methods=['GET'])
+@cross_origin()
 def log_in():
     username = request.args.get('username')
     password = request.args.get('password')

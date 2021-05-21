@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/FanCentral/static/css/main.17ff0b42.chunk.css",
-    "main.js": "/FanCentral/static/js/main.2208658d.chunk.js",
-    "main.js.map": "/FanCentral/static/js/main.2208658d.chunk.js.map",
+    "main.js": "/FanCentral/static/js/main.24932f7c.chunk.js",
+    "main.js.map": "/FanCentral/static/js/main.24932f7c.chunk.js.map",
     "runtime-main.js": "/FanCentral/static/js/runtime-main.44cea21b.js",
     "runtime-main.js.map": "/FanCentral/static/js/runtime-main.44cea21b.js.map",
     "static/css/2.658248ec.chunk.css": "/FanCentral/static/css/2.658248ec.chunk.css",
-    "static/js/2.9a3f18f9.chunk.js": "/FanCentral/static/js/2.9a3f18f9.chunk.js",
-    "static/js/2.9a3f18f9.chunk.js.map": "/FanCentral/static/js/2.9a3f18f9.chunk.js.map",
+    "static/js/2.c48a3dae.chunk.js": "/FanCentral/static/js/2.c48a3dae.chunk.js",
+    "static/js/2.c48a3dae.chunk.js.map": "/FanCentral/static/js/2.c48a3dae.chunk.js.map",
     "static/js/3.7b753f6b.chunk.js": "/FanCentral/static/js/3.7b753f6b.chunk.js",
     "static/js/3.7b753f6b.chunk.js.map": "/FanCentral/static/js/3.7b753f6b.chunk.js.map",
     "index.html": "/FanCentral/index.html",
     "static/css/2.658248ec.chunk.css.map": "/FanCentral/static/css/2.658248ec.chunk.css.map",
     "static/css/main.17ff0b42.chunk.css.map": "/FanCentral/static/css/main.17ff0b42.chunk.css.map",
-    "static/js/2.9a3f18f9.chunk.js.LICENSE.txt": "/FanCentral/static/js/2.9a3f18f9.chunk.js.LICENSE.txt",
+    "static/js/2.c48a3dae.chunk.js.LICENSE.txt": "/FanCentral/static/js/2.c48a3dae.chunk.js.LICENSE.txt",
     "static/media/1.17866943.png": "/FanCentral/static/media/1.17866943.png",
     "static/media/aryan.4128dea4.png": "/FanCentral/static/media/aryan.4128dea4.png",
     "static/media/basketballGame.e9c02e52.jpg": "/FanCentral/static/media/basketballGame.e9c02e52.jpg",
@@ -31,8 +31,8 @@
   "entrypoints": [
     "static/js/runtime-main.44cea21b.js",
     "static/css/2.658248ec.chunk.css",
-    "static/js/2.9a3f18f9.chunk.js",
+    "static/js/2.c48a3dae.chunk.js",
     "static/css/main.17ff0b42.chunk.css",
-    "static/js/main.2208658d.chunk.js"
+    "static/js/main.24932f7c.chunk.js"
   ]
 }

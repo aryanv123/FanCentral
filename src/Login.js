@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Alert from 'react-bootstrap/Alert';
 
 async function loginUser(email, password) {
     return fetch('http://127.0.0.1:5000/login?username=' + email + '&password=' + password, {
@@ -21,7 +22,8 @@ class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            show: false
+            show: false,
+            error: false
         };
         this.handleShow = this.handleShow.bind(this);
         this.handleClose = this.handleClose.bind(this);
@@ -59,8 +61,13 @@ class Login extends React.Component {
 
     handleLogin() {
         console.log(loginUser(this.state.email, this.state.password))
-        console.log(this.state.email)
-        console.log(this.state.password)
+        if (this.state.email.toLowerCase() == "aryan@gmail.com" && this.state.password == "Password") {
+            this.props.logged();
+        } else {
+            this.setState({
+                error: true
+            })
+        }
     }
 
     render() {
@@ -79,6 +86,7 @@ class Login extends React.Component {
                     <Modal.Body>
                         <Form onSubmit={this.handleSubmit}>
                             <Form.Group controlId="formBasicEmail">
+                                {this.state.error ? <Alert variant='danger'>Incorrect combination of Email and Password!</Alert> : null}
                                 <Form.Label>Email address</Form.Label>
                                 <Form.Control type="email" placeholder="Enter email" onChange={e => this.setState({ email: e.target.value })} />
                                 <Form.Text className="text-muted">
@@ -90,7 +98,7 @@ class Login extends React.Component {
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control type="password" placeholder="Password" onChange={e => this.setState({ password: e.target.value })} />
                             </Form.Group>
-                            <Button type="submit" variant='secondary' onClick={() => {this.props.logged(); this.handleLogin()}}>
+                            <Button type="submit" variant='secondary' onClick={() => {this.handleLogin()}}>
                                 Submit
                             </Button>
     

@@ -54,9 +54,9 @@ class Login extends React.Component {
     }
 
     handleLogin() {
-        data = loginUser(this.state.email, this.state.password)
+        let data = loginUser(this.state.email, this.state.password)
         console.log(data)
-        if (data.loggedIn == True) {
+        if (data.loggedIn == "True") {
             this.props.logged();
         } else {
             this.setState({

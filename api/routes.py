@@ -37,15 +37,16 @@ def social_feed():
     #     curr_post['LikesNumber'] = row[3]
     #     curr_post['PostURL'] = row[4]
     #     posts_arr.append(curr_post)
-    postIDs = cursor.execute("SELECT * FROM Posts")
-    cursor.close()
+    cursor.execute("SELECT * FROM Posts")
     posts = []
-    for postID in postIDs:
+    for postID in cursor.fetchall():
+        print(postID)
         curr_post = {}
         curr_post['id'] = postID[0]
         posts.append(curr_post)
-
-    return posts
+    cursor.close()
+    posts_dict = {"posts": posts}
+    return posts_dict
 
 @app.route('/signup', methods=['POST'])
 def sign_up():
@@ -141,4 +142,4 @@ def chat_room():
 '''
 
 if __name__ == '__main__':
-    app.run(debug=True) 
+    app.run() 
